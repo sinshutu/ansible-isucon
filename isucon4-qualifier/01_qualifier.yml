@@ -3,7 +3,7 @@
   become: yes
   tasks:
     - user: name=isucon groups=wheel
-    - lineinfile: dest=/etc/becomeers state=present regexp='^%wheel ALL\=' line='%wheel ALL=(ALL) NOPASSWD:ALL' validate='vibecome -cf %s'
+    - lineinfile: dest=/etc/sudoers state=present regexp='^%wheel ALL\=' line='%wheel ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
     - command: yum update -y
     - yum: pkg=http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
     - yum: pkg=nginx state=installed
@@ -24,7 +24,7 @@
     - command: rm -rf /tmp/isucon
       args:
         removes: /tmp/isucon
-    - file: path=/tmp/isucon state=directory 
+    - file: path=/tmp/isucon state=directory
     - shell: rsync -a /tmp/isucon4/qualifier/sql /tmp/isucon/
     - shell: rsync -a /tmp/isucon4/qualifier/webapp /tmp/isucon/
     - shell: |
