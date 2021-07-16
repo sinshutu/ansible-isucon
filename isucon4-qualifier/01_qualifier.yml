@@ -1,9 +1,9 @@
 ---
 - hosts: all
-  sudo: yes
+  become: yes
   tasks:
     - user: name=isucon groups=wheel
-    - lineinfile: dest=/etc/sudoers state=present regexp='^%wheel ALL\=' line='%wheel ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
+    - lineinfile: dest=/etc/becomeers state=present regexp='^%wheel ALL\=' line='%wheel ALL=(ALL) NOPASSWD:ALL' validate='vibecome -cf %s'
     - command: yum update -y
     - yum: pkg=http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
     - yum: pkg=nginx state=installed
@@ -38,10 +38,10 @@
         chmod a+x /home/isucon/.bashrc
     - command: chown -R isucon:isucon /tmp/isucon
     - command: rsync -avz --delete --exclude-from=/tmp/isucon4/qualifier/ami/files/rsync_exclude.txt /tmp/isucon/ /home/isucon/
-      sudo: yes
+      become: yes
   post_tasks:
     - command: ./init.sh
-      sudo_user: isucon
+      become_user: isucon
       args:
         chdir: /home/isucon
     - mysql_user: name=isucon password=isucon priv=*.*:ALL state=present

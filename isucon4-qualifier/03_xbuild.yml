@@ -1,7 +1,7 @@
 ---
 - hosts: all
-  sudo_user: isucon
-  sudo: yes
+  become_user: isucon
+  become: yes
   tasks:
     - command: git clone https://github.com/tagomoris/xbuild.git /home/isucon/.xbuild
       args:

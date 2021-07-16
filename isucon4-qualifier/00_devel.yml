@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  sudo: yes
+  become: yes
   tasks:
     - yum: pkg=epel-release state=installed
     - yum: pkg=libselinux-python state=installed

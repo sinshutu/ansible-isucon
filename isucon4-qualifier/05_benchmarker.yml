@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  sudo: yes
+  become: yes
   tasks:
     - command: rm -rf /tmp/benchmarker
       args:
@@ -11,9 +11,9 @@
     - lineinfile: dest=/tmp/benchmarker/main.go state=present regexp='checkInstanceMetadata\(\)' line=''
     - name: build benchmarker
       command: /home/isucon/env.sh make release
-      sudo_user: isucon
+      become_user: isucon
       ignore_errors: yes
       args:
         chdir: /tmp/benchmarker
     - command: mv /tmp/benchmarker/benchmarker /home/isucon/
-      sudo_user: isucon
+      become_user: isucon

@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  sudo: yes
+  become: yes
   tasks:
     - file: path=/tmp/benchmarker state=absent
     - file: path=/tmp/isucon state=absent

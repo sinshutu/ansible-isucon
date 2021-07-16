@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  sudo: yes
+  become: yes
   tasks:
     - yum: pkg=git state=installed
     - yum: pkg=mercurial state=installed
