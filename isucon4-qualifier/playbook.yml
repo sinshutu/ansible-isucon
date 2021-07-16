@@ -1,7 +1,7 @@
-- include: 00_devel.yml
-- include: 01_qualifier.yml
-- include: 02_supervisord.yml
-- include: 03_xbuild.yml
-- include: 04_golang.yml
-- include: 05_benchmarker.yml
-- include: _cleanup.yml
+- import_playbook: 00_devel.yml
+- import_playbook: 01_qualifier.yml
+- import_playbook: 02_supervisord.yml
+- import_playbook: 03_xbuild.yml
+- import_playbook: 04_golang.yml
+- import_playbook: 05_benchmarker.yml
+- import_playbook: _cleanup.yml
