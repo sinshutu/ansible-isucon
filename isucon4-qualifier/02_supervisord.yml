@@ -2,8 +2,11 @@
 - hosts: all
   become: yes
   tasks:
-    - yum: name=python-setuptools
-    - easy_install: name=supervisor
+    - name: get install-pip script
+      get_url: url='https://bootstrap.pypa.io/pip/2.7/get-pip.py' dest='/home/isucon/get-pip.py'
+    - name: install pip
+      command: python /home/isucon/get-pip.py
+    - pip: name=supervisor
     - shell: |
         cp /tmp/isucon4/qualifier/ami/files/supervisord.init /etc/init.d/supervisord
         chmod a+x /etc/init.d/supervisord
