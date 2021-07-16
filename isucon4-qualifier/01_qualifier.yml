@@ -9,7 +9,7 @@
     - yum: pkg=nginx state=installed
     - service: name=nginx enabled=true
     - yum: pkg=mysql-community-server state=installed
-    - service: name=mysqld state=running enabled=true
+    - service: name=mysqld state=started enabled=true
     - yum: pkg=MySQL-python state=installed
     - yum: pkg=git state=installed
     - git: repo=https://github.com/isucon/isucon4.git dest=/tmp/isucon4
